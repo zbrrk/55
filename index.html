@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Date Proposal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    #proposal-container {
+      position: relative;
+      height: 150px;
+    }
+    #yesButton, #noButton {
+      position: absolute;
+      width: 80px;
+      height: 40px;
+      cursor: pointer;
+    }
+    #noButton {
+      background-color: #ff6666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Do you love me?</h1>
+
+  <div id="proposal-container">
+    <button id="yesButton" onclick="showResult('Yes')">Yes</button>
+    <button id="noButton" onmouseover="moveNoAway()" onclick="showResult('No')">No</button>
+  </div>
+
+  <script>
+    function showResult(answer) {
+      if (answer === 'Yes') {
+        // Open a new window with a special message
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write('<h2>Thanks Pookieeeeee!</h2>');
+      }
+
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = `You chose: ${answer}`;
+    }
+
+    function moveNoAway() {
+      const noButton = document.getElementById('noButton');
+      const maxX = window.innerWidth - noButton.clientWidth;
+      const maxY = window.innerHeight - noButton.clientHeight;
+
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      noButton.style.left = newX + 'px';
+      noButton.style.top = newY + 'px';
+    }
+  </script>
+
+</body>
+</html>
